@@ -1,0 +1,40 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\documentclass[11pt, a4paper]{awesome-cv}
+
+\geometry{left=1.4cm, top=.8cm, right=1.4cm, bottom=1.8cm, footskip=.5cm}
+
+\colorlet{awesome}{awesome-skyblue}
+\setbool{acvSectionColorHighlight}{true}
+\renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
+
+\name{José Francisco}{Ruiz Zamora}
+\position{Backend Software Developer}
+\address{Almería, España}
+
+\mobile{+34 633 560 772}
+\email{josefranruiz8@gmail.com}
+\github{jfrz38}
+\linkedin{josef-ruiz}
+
+\newif\ifincludehexacode
+\includehexacodetrue
+\IfFileExists{cv/build-config.tex}{\input{cv/build-config.tex}}{}
+
+\quote{``Desarrollador backend enfocado en sistemas mantenibles, buenas prácticas de arquitectura y código limpio."}
+
+\begin{document}
+
+\makecvheader[C]
+
+\makecvfooter
+  {}
+  {}
+  {\thepage}
+
+\input{cv/experience.tex}
+\input{cv/skills.tex}
+\input{cv/education.tex}
+
+\end{document}

@@ -1,0 +1,7 @@
+build/
+cv/build-config.tex
+cv.pdf
+*.aux
+*.log
+*.out
+*.synctex.gz
