@@ -11,5 +11,5 @@ if errorlevel 1 (
 )
 
 echo.
-echo OK: build\cv.pdf generated.
+echo OK: build\cv-es.pdf generated.
 endlocal

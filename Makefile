@@ -3,16 +3,21 @@
 TARGET = cv
 OUTDIR = build
 
-.PHONY: all clean no-hexacode preview
+.PHONY: all es en clean no-hexacode preview
 
-all:
-	powershell -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -IncludeHexacode 1
+all: es en
+
+es:
+	powershell -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -Language es -IncludeHexacode 1
+
+en:
+	powershell -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -Language en -IncludeHexacode 1
 
 no-hexacode:
-	powershell -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -IncludeHexacode 0
+	powershell -NoProfile -ExecutionPolicy Bypass -File ./build.ps1 -Language es -IncludeHexacode 0
 
 clean:
 	powershell -NoProfile -Command "if (Test-Path '$(OUTDIR)') { Remove-Item -Recurse -Force '$(OUTDIR)' }"
 
-preview: all
-	powershell -NoProfile -Command "Start-Process '$(OUTDIR)/$(TARGET).pdf'"
+preview: es
+	powershell -NoProfile -Command "Start-Process '$(OUTDIR)/$(TARGET)-es.pdf'"

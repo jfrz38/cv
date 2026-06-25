@@ -10,19 +10,18 @@
 \renewcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
 
 \name{José Francisco}{Ruiz Zamora}
-\position{Backend Software Engineer}
-\address{Almería, España}
 
 \mobile{+34 633 560 772}
 \email{josefranruiz8@gmail.com}
 \github{jfrz38}
 \linkedin{josef-ruiz}
 
+\def\cvlang{es}
 \newif\ifincludehexacode
 \includehexacodetrue
 \IfFileExists{cv/build-config.tex}{\input{cv/build-config.tex}}{}
 
-\quote{``Desarrollador backend enfocado en sistemas mantenibles, buenas prácticas de arquitectura y código limpio."}
+\input{cv/\cvlang/profile.tex}
 
 \begin{document}
 
@@ -33,8 +32,8 @@
   {}
   {\thepage}
 
-\input{cv/experience.tex}
-\input{cv/skills.tex}
-\input{cv/education.tex}
+\input{cv/\cvlang/experience.tex}
+\input{cv/\cvlang/skills.tex}
+\input{cv/\cvlang/education.tex}
 
 \end{document}

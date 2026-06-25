@@ -18,4 +18,13 @@ O, si tienes `make`:
 make
 ```
 
-El PDF se genera en `build/cv.pdf`.
+`make` genera `build/cv-es.pdf` y `build/cv-en.pdf`.
+
+Para generar un idioma concreto:
+
+```powershell
+.\build.ps1 -Language es
+.\build.ps1 -Language en
+```
+
+El contenido traducible vive en `cv/es` y `cv/en`; `cv.tex` mantiene el formato común.
