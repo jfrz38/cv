@@ -1,44 +1,42 @@
-# CV
+# José Francisco Ruiz Zamora | Backend Software Engineer
 
-CV en LaTeX con la plantilla Awesome-CV para exportar a PDF.
+[Ver el CV online](https://jfrz38.github.io/cv/)
 
-Requiere Bash, Make y XeLaTeX mediante MiKTeX o TeX Live. En Windows se puede
-ejecutar desde Git Bash siempre que `xelatex` esté disponible en `PATH`.
+Currículum bilingüe en LaTeX, generado con la plantilla Awesome-CV y publicado
+como una web estática con PDFs en español e inglés.
 
-## Compilar
+## Estructura
 
-```sh
-make all
-```
+- `cv/es` y `cv/en`: contenido específico de cada idioma.
+- `cv.tex`: formato y composición compartidos.
+- `site`: web estática y visor de los PDFs generados.
+- `.github/workflows/pages.yml`: compilación y publicación en GitHub Pages.
 
-`make all` genera `build/cv-es.pdf` y `build/cv-en.pdf`. Ejecuta `make` sin
-argumentos para ver los targets disponibles.
+## Requisitos
 
-Para generar un idioma concreto o limpiar los archivos generados:
+- Bash, Make y XeLaTeX mediante MiKTeX o TeX Live.
+- En Windows, se puede usar Git Bash si `xelatex` está disponible en `PATH`.
 
-```sh
-make es
-make en
-make clean
-```
+## Uso
 
-El contenido traducible vive en `cv/es` y `cv/en`; `cv.tex` mantiene el formato
-común.
+Ejecuta `make` para consultar los comandos disponibles.
 
-## Web local
+| Comando | Descripción |
+| --- | --- |
+| `make all` | Genera los CV en español e inglés en `build/`. |
+| `make es` | Genera solo el CV en español. |
+| `make en` | Genera solo el CV en inglés. |
+| `make no-hexacode` | Genera el CV en español sin la experiencia de Hexacode. |
+| `make site` | Genera ambos PDFs y prepara la web estática. |
+| `make serve` | Prepara la web y la sirve en `http://localhost:8000`. |
+| `make clean` | Elimina los archivos generados. |
 
-Para compilar los dos idiomas, preparar la web y servirla en
-`http://localhost:8000`:
-
-```sh
-make serve
-```
-
-El idioma se puede seleccionar desde la barra superior o mediante `?lang=es` y
-`?lang=en`. Los PDF copiados a `site/` son archivos generados y no se versionan.
+Los PDFs de `build/` y los copiados a `site/` son generados y no se versionan.
+El idioma del visor se puede seleccionar desde la barra superior o con
+`?lang=es` y `?lang=en`.
 
 ## Publicación
 
-El workflow `.github/workflows/pages.yml` compila la misma web con `make site` y
-la publica en GitHub Pages en cada push a `main`. Antes del primer despliegue hay
-que habilitar GitHub Pages con GitHub Actions como fuente del sitio.
+Cada push a `main` ejecuta el workflow de GitHub Actions: compila el CV con
+`make site` y publica el directorio `site/` en GitHub Pages. Antes del primer
+despliegue hay que habilitar GitHub Pages con GitHub Actions como fuente.
