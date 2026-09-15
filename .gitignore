@@ -1,5 +1,5 @@
 build/
-cv/build-config.tex
+site/*.pdf
 *.aux
 *.log
 *.out
