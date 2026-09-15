@@ -16,10 +16,14 @@
 \github{jfrz38}
 \linkedin{josef-ruiz}
 
-\def\cvlang{es}
+\providecommand{\cvlang}{es}
+\providecommand{\cvincludehexacode}{1}
 \newif\ifincludehexacode
-\includehexacodetrue
-\IfFileExists{cv/build-config.tex}{\input{cv/build-config.tex}}{}
+\ifnum\cvincludehexacode=1
+  \includehexacodetrue
+\else
+  \includehexacodefalse
+\fi
 
 \input{cv/\cvlang/profile.tex}
 

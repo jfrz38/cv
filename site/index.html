@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#17212b">
+  <meta name="description" content="Resume of José Francisco Ruiz Zamora.">
+  <title>CV | José Francisco Ruiz Zamora</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #17212b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      display: grid;
+      grid-template-rows: 48px minmax(0, 1fr);
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 14px 0 18px;
+      color: #f5f8fa;
+      background: #17212b;
+      border-bottom: 1px solid #2d3b48;
+    }
+
+    .title {
+      min-width: 0;
+      margin-right: auto;
+      overflow: hidden;
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: .01em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .open-pdf {
+      color: #c8d4dc;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .open-pdf:hover,
+    .open-pdf:focus-visible {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    .languages {
+      display: flex;
+      padding: 3px;
+      border: 1px solid #40515f;
+      border-radius: 999px;
+      background: #101820;
+    }
+
+    .languages button {
+      min-width: 38px;
+      padding: 4px 9px;
+      border: 0;
+      border-radius: 999px;
+      color: #aebdc7;
+      background: transparent;
+      cursor: pointer;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .languages button[aria-pressed="true"] {
+      color: #07131b;
+      background: #3db4f2;
+    }
+
+    .languages button:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: #e7ebee;
+    }
+
+    @media (max-width: 520px) {
+      header {
+        gap: 10px;
+        padding-inline: 12px;
+      }
+
+      .title {
+        display: none;
+      }
+
+      .open-pdf {
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title">José Francisco Ruiz Zamora</div>
+    <a class="open-pdf" id="open-pdf" href="cv-en.pdf" target="_blank" rel="noopener">
+      Open PDF
+    </a>
+    <div class="languages" role="group" aria-label="Resume language">
+      <button type="button" data-language="es" aria-pressed="false">ES</button>
+      <button type="button" data-language="en" aria-pressed="true">EN</button>
+    </div>
+  </header>
+
+  <iframe id="viewer" src="cv-en.pdf" title="Resume of José Francisco Ruiz Zamora"></iframe>
+
+  <script>
+    const languages = {
+      es: {
+        file: "cv-es.pdf",
+        htmlLanguage: "es",
+        openLabel: "Abrir PDF",
+        viewerTitle: "Currículum de José Francisco Ruiz Zamora"
+      },
+      en: {
+        file: "cv-en.pdf",
+        htmlLanguage: "en",
+        openLabel: "Open PDF",
+        viewerTitle: "Resume of José Francisco Ruiz Zamora"
+      }
+    };
+
+    const viewer = document.querySelector("#viewer");
+    const openPdf = document.querySelector("#open-pdf");
+    const buttons = document.querySelectorAll("[data-language]");
+
+    function selectLanguage(language) {
+      const selected = languages[language] ?? languages.en;
+      const params = new URLSearchParams(window.location.search);
+
+      document.documentElement.lang = selected.htmlLanguage;
+      viewer.src = selected.file;
+      viewer.title = selected.viewerTitle;
+      openPdf.href = selected.file;
+      openPdf.textContent = selected.openLabel;
+
+      for (const button of buttons) {
+        button.setAttribute("aria-pressed", String(button.dataset.language === language));
+      }
+
+      params.set("lang", language);
+      window.history.replaceState(null, "", `${window.location.pathname}?${params}${window.location.hash}`);
+    }
+
+    for (const button of buttons) {
+      button.addEventListener("click", () => selectLanguage(button.dataset.language));
+    }
+
+    const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+    selectLanguage(requestedLanguage in languages ? requestedLanguage : "en");
+  </script>
+</body>
+</html>
