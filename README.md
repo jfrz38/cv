@@ -1,42 +1,42 @@
 # José Francisco Ruiz Zamora | Backend Software Engineer
 
-[Ver el CV online](https://jfrz38.github.io/cv/)
+[View the CV online](https://jfrz38.github.io/cv/)
 
-Currículum bilingüe en LaTeX, generado con la plantilla Awesome-CV y publicado
-como una web estática con PDFs en español e inglés.
+Bilingual CV written in LaTeX, generated with the Awesome-CV template and
+published as a static website with PDFs in Spanish and English.
 
-## Estructura
+## Structure
 
-- `cv/es` y `cv/en`: contenido específico de cada idioma.
-- `cv.tex`: formato y composición compartidos.
-- `site`: web estática y visor de los PDFs generados.
-- `.github/workflows/pages.yml`: compilación y publicación en GitHub Pages.
+- `cv/es` and `cv/en`: language-specific content.
+- `cv.tex`: shared formatting and layout.
+- `site`: static website and viewer for the generated PDFs.
+- `.github/workflows/pages.yml`: build and deployment to GitHub Pages.
 
-## Requisitos
+## Requirements
 
-- Bash, Make y XeLaTeX mediante MiKTeX o TeX Live.
-- En Windows, se puede usar Git Bash si `xelatex` está disponible en `PATH`.
+- Bash, Make, and XeLaTeX through MiKTeX or TeX Live.
+- On Windows, you can use Git Bash if `xelatex` is available in `PATH`.
 
-## Uso
+## Usage
 
-Ejecuta `make` para consultar los comandos disponibles.
+Run `make` to view the available commands.
 
-| Comando | Descripción |
+| Command | Description |
 | --- | --- |
-| `make all` | Genera los CV en español e inglés en `build/`. |
-| `make es` | Genera solo el CV en español. |
-| `make en` | Genera solo el CV en inglés. |
-| `make no-hexacode` | Genera el CV en español sin la experiencia de Hexacode. |
-| `make site` | Genera ambos PDFs y prepara la web estática. |
-| `make serve` | Prepara la web y la sirve en `http://localhost:8000`. |
-| `make clean` | Elimina los archivos generados. |
+| `make all` | Builds the Spanish and English CVs in `build/`. |
+| `make es` | Builds only the Spanish CV. |
+| `make en` | Builds only the English CV. |
+| `make no-hexacode` | Builds the Spanish CV without the Hexacode experience. |
+| `make site` | Builds both PDFs and prepares the static website. |
+| `make serve` | Prepares the website and serves it at `http://localhost:8000`. |
+| `make clean` | Removes generated files. |
 
-Los PDFs de `build/` y los copiados a `site/` son generados y no se versionan.
-El idioma del visor se puede seleccionar desde la barra superior o con
-`?lang=es` y `?lang=en`.
+The PDFs in `build/` and those copied to `site/` are generated files and are not
+tracked in version control. You can select the viewer language from the top bar
+or with `?lang=es` and `?lang=en`.
 
-## Publicación
+## Deployment
 
-Cada push a `main` ejecuta el workflow de GitHub Actions: compila el CV con
-`make site` y publica el directorio `site/` en GitHub Pages. Antes del primer
-despliegue hay que habilitar GitHub Pages con GitHub Actions como fuente.
+Each push to `main` runs the GitHub Actions workflow, builds the CV with
+`make site`, and deploys the `site/` directory to GitHub Pages. Before the first
+deployment, GitHub Pages must be enabled with GitHub Actions as the source.
